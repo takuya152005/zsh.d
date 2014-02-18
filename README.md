@@ -4,9 +4,8 @@
 
 ## 使い方 ##
 
-	% git clone https://github.com/clear-code/zsh.d.git ~/.zsh.d
-	% echo "source ~/.zsh.d/zshrc" > ~/.zshrc
-	% echo "source ~/.zsh.d/zshenv" > ~/.zshenv
+	% git clone https://github.com/takuya152005/zsh.d.git ~/.zsh.d
+	% sh setup.sh
 
 ## カスタマイズ ##
 

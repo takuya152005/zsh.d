@@ -30,8 +30,11 @@ path=(# システム用
       # Cygwin用
       /cygdrive/c/meadow/bin(N-/)
       # システム用
+      /sbin(N-/)
       /usr/local/bin(N-/)
+      /usr/local/sbin(N-/)
       /usr/bin(N-/)
+      /usr/sbin(N-/)
       /usr/games(N-/))
 
 # sudo時のパスの設定

@@ -1,14 +1,19 @@
 # -*- mode: sh; indent-tabs-mode: nil -*-
 
+# 言語設定
+export LANG=ja_JP.UTF-8
+
 # キーバインド
 ## Emacsキーバインドを使う。
-bindkey -e
+#bindkey -e
 
 # ディレクトリ移動
 ## ディレクトリ名だけでcdする。
 setopt auto_cd
-## cdで移動してもpushdと同じようにディレクトリスタックに追加する。
+## cdで移動してもpushdと同じようにディレクトリスタックに追加する。"cd -[Tab]"で移動履歴を一覧
 setopt auto_pushd
+## ディレクトリ名の補完で末尾の /を自動的に付加し、次の補完に備える
+setopt auto_param_slash
 ## カレントディレクトリ中に指定されたディレクトリが見つからなかった場合に
 ## 移動先を検索するリスト。
 cdpath=(~)
@@ -35,6 +40,12 @@ setopt inc_append_history
 setopt share_history
 ## C-sでのヒストリ検索が潰されてしまうため、出力停止・開始用にC-s/C-qを使わない。
 setopt no_flow_control
+## コマンド履歴検索
+autoload history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^P" history-beginning-search-backward-end
+bindkey "^N" history-beginning-search-forward-end
 
 
 # プロンプト
@@ -102,7 +113,7 @@ zstyle ':vcs_info:*' actionformats \
 ###   %D{%Y/%m/%d %H:%M}: 日付。「年/月/日 時:分」というフォーマット。
 prompt_bar_left_self="(%{%B%}%n%{%b%}%{%F{cyan}%}@%{%f%}%{%B%}%m%{%b%})"
 prompt_bar_left_status="(%{%B%F{white}%(?.%K{green}.%K{red})%}%?%{%k%f%b%})"
-prompt_bar_left_date="<%{%B%}%D{%Y/%m/%d %H:%M}%{%b%}>"
+prompt_bar_left_date="<%{%B%}%D{%Y/%m/%d %H:%M:%S}%{%b%}>"
 prompt_bar_left="-${prompt_bar_left_self}-${prompt_bar_left_status}-${prompt_bar_left_date}-"
 ### プロンプトバーの右側
 ###   %{%B%K{magenta}%F{white}%}...%{%f%k%b%}:
@@ -204,7 +215,16 @@ update_prompt()
 }
 
 ## コマンド実行前に呼び出されるフック。
-precmd_functions=($precmd_functions update_prompt)
+#precmd_functions=($precmd_functions update_prompt)
+
+# なれるまでは下記 
+autoload colors
+colors
+PROMPT="
+ [%{${fg[yellow]}%}%~%{${reset_color}%}]  ${prompt_bar_left_date}
+  %n %B%(?,%F{green},%F{red})%(!,#,>)%f%b "
+#PROMPT2="%n%B%(?,%F{green},%F{red})%(!,#,>)%f%b"
+
 
 
 # 補完
@@ -259,6 +279,18 @@ setopt hist_expand
 setopt no_beep
 ## 辞書順ではなく数字順に並べる。
 setopt numeric_glob_sort
+## TAB で順に補完候補を切り替える
+setopt auto_menu
+## ヒストリを呼び出してから実行する間に一旦編集
+setopt hist_verify
+## 補完候補表示時などにピッピとビープ音をならないように設定
+setopt nolistbeep
+## 補完候補を詰めて表示する
+setopt list_packed
+## aliasも補完対象とする
+setopt complete_aliases
+## 補完候補一覧でファイルの種別をマーク表示
+setopt list_types
 
 
 # 展開
@@ -266,7 +298,7 @@ setopt numeric_glob_sort
 ## 「~」や「=コマンド」などのファイル名展開を行う。
 setopt magic_equal_subst
 ## 拡張globを有効にする。
-## glob中で「(#...)」という書式で指定する。
+## glob中で「(#...)」という書式で指定する。ファイル名で #, ~, ^ の 3 文字を正規表現として扱う
 setopt extended_glob
 ## globでパスを生成したときに、パスがディレクトリだったら最後に「/」をつける。
 setopt mark_dirs
@@ -298,6 +330,22 @@ WORDCHARS=${WORDCHARS:s,/,,}
 ## 「|」も単語区切りとみなす。
 ## 2011-09-19
 WORDCHARS="${WORDCHARS}|"
+
+# その他
+## コアダンプサイズを制限
+limit coredumpsize 102400
+## 出力の文字列末尾に改行コードが無い場合でも表示
+unsetopt promptcr
+## ビープを鳴らさない
+setopt nobeep
+## サスペンド中のプロセスと同じコマンド名を実行した場合はリジューム
+setopt auto_resume
+## cd 時に自動で push
+setopt autopushd
+## 同じディレクトリを pushd しない
+setopt pushd_ignore_dups
+## スペルチェック
+setopt correct
 
 
 # alias
@@ -360,6 +408,7 @@ alias enw="emacs -nw"
 ## exitのショートカット。
 ### 2011-11-06
 alias x="exit"
+
 
 ## カスタムaliasの設定
 ### ~/.zsh.d/zshalias → ~/.zshaliasの順に探して

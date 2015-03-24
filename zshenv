@@ -35,7 +35,8 @@ path=(# システム用
       /usr/local/sbin(N-/)
       /usr/bin(N-/)
       /usr/sbin(N-/)
-      /usr/games(N-/))
+      /usr/games(N-/)
+      /Applications/XAMPP/xamppfiles/bin(N-/))
 
 # sudo時のパスの設定
 ## -x: export SUDO_PATHも一緒に行う。

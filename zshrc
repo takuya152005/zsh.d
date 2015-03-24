@@ -86,10 +86,15 @@ bg256()
 
 ## バージョン管理システムの情報も表示する
 autoload -Uz vcs_info
-zstyle ':vcs_info:*' formats \
-    '(%{%F{white}%K{green}%}%s%{%f%k%})-[%{%F{white}%K{blue}%}%b%{%f%k%}]'
-zstyle ':vcs_info:*' actionformats \
-    '(%{%F{white}%K{green}%}%s%{%f%k%})-[%{%F{white}%K{blue}%}%b%{%f%k%}|%{%F{white}%K{red}%}%a%{%f%k%}]'
+#zstyle ':vcs_info:*' formats \
+#    '(%{%F{white}%K{green}%}%s%{%f%k%})-[%{%F{white}%K{blue}%}%b%{%f%k%}]'
+#zstyle ':vcs_info:*' actionformats \
+#    '(%{%F{white}%K{green}%}%s%{%f%k%})-[%{%F{white}%K{blue}%}%b%{%f%k%}|%{%F{white}%K{red}%}%a%{%f%k%}]'
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
+zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
+zstyle ':vcs_info:*' formats "%F{green}%c%u[%b]%f"
+zstyle ':vcs_info:*' actionformats '[%b|%a]'
 
 ### プロンプトバーの左側
 ###   %{%B%}...%{%b%}: 「...」を太字にする。
@@ -178,10 +183,10 @@ update_prompt()
     #          長い分を削除して「...」にする。最終的に「...」も含めて
     #          「${max_path_length}」カラムより長くなることはない。
     bar_right=${prompt_bar_right:s/%d/%(C,%${max_path_length}<...<%d%<<,)/}
-    # 「${bar_rest_length}」文字分の「-」を作っている。
+    # 「${bar_rest_length}」文字分の「空白」を作っている。
     # どうせ後で切り詰めるので十分に長い文字列を作っているだけ。
     # 文字数はざっくり。
-    local separator="${(l:${bar_rest_length}::-:)}"
+    local separator="${(l:${bar_rest_length}:: :)}"
     # プロンプトバー全体を「${bar_rest_length}」カラム分にする。
     #   %${bar_rest_length}<<...%<<:
     #     「...」を最大で「${bar_rest_length}」カラムにする。
@@ -215,9 +220,9 @@ update_prompt()
 }
 
 ## コマンド実行前に呼び出されるフック。
-#precmd_functions=($precmd_functions update_prompt)
+precmd_functions=($precmd_functions update_prompt)
 
-# なれるまでは下記 
+# なれるまでは下記
 autoload colors
 colors
 PROMPT="

@@ -226,3 +226,8 @@ done
 ## これを実行するシェルスクリプトが/etc/profile.d/vte.shに
 ## インストールされているので、あったら読み込む。
 [ -f /etc/profile.d/vte.sh ] && . /etc/profile.d/vte.sh
+
+
+# gradle用の設定
+gradle_home=(/Applications/gradle(N-/))
+path=($gradle_home/bin $path)

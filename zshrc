@@ -3,6 +3,9 @@
 # 言語設定
 export LANG=ja_JP.UTF-8
 
+# lsのディレクトリ色をマゼンタに
+export LSCOLORS=Exfxcxdxbxegedabagacad
+
 # キーバインド
 ## Emacsキーバインドを使う。
 #bindkey -e

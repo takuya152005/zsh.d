@@ -13,3 +13,12 @@ preexec () {
 ## MacVim
 alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim -u $HOME/.vimrc "$@"'
 #alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+
+# nvm(Node Version Manager)
+source ~/.nvm/nvm.sh
+
+# The next line updates PATH for the Google Cloud SDK.
+source ~/shell/google/google-cloud-sdk/path.zsh.inc
+
+# The next line enables shell command completion for gcloud.
+source ~/shell/google/google-cloud-sdk/completion.zsh.inc

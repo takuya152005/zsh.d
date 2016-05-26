@@ -21,6 +21,6 @@ export DBD_MYSQL_TESTPASSWORD=
 export DBD_MYSQL_TESTPORT=3306
 export DBD_MYSQL_TESTUSER=root
 export DYLD_LIBRARY_PATH="/Applications/XAMPP/bin:$DYLD_LIBRARY_PATH"
-PATH=/Applications/XAMPP/bin:${PATH}
+PATH=/Applications/vert.x-3.1.0/bin:/Applications/XAMPP/bin:${PATH}
 
 

@@ -36,3 +36,7 @@ export SCREENDIR=~/.zsh.d/screen
 # Go
 export GOPATH="$HOME/go"
 export PATH="$PATH:$GOPATH/bin"
+
+# nodebrew デフォルトのnodeを使用する場合はコメントすること
+export PATH=$HOME/.nodebrew/current/bin:$PATH
+

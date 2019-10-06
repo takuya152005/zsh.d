@@ -8,7 +8,7 @@ source ~/.zsh.d/zshrc
 preexec () {
   [ ${STY} ] && echo -ne "\ek${1%% *}\e\\"  # 20070907 修正
 }
-[ ${STY} ] || screen -rx || screen -D -RR  # 20070905 修正
+# [ ${STY} ] || screen -rx || screen -D -RR  # 20070905 修正
 
 ## MacVim brewでインストールのため必要なし
 #alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim -u $HOME/.vimrc "$@"'

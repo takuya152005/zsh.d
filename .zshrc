@@ -10,8 +10,8 @@ preexec () {
 }
 [ ${STY} ] || screen -rx || screen -D -RR  # 20070905 修正
 
-## MacVim
-alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim -u $HOME/.vimrc "$@"'
+## MacVim brewでインストールのため必要なし
+#alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim -u $HOME/.vimrc "$@"'
 #alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 
 # nvm(Node Version Manager)

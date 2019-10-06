@@ -18,7 +18,7 @@ preexec () {
 source ~/.nvm/nvm.sh
 
 # The next line updates PATH for the Google Cloud SDK.
-source ~/shell/google/google-cloud-sdk/path.zsh.inc
+#source ~/shell/google/google-cloud-sdk/path.zsh.inc
 
 # The next line enables shell command completion for gcloud.
-source ~/shell/google/google-cloud-sdk/completion.zsh.inc
+#source ~/shell/google/google-cloud-sdk/completion.zsh.inc

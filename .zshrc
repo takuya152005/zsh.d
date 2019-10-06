@@ -32,3 +32,7 @@ eval "$(rbenv init -)"
 
 # screenのセッション保存
 export SCREENDIR=~/.zsh.d/screen
+
+# Go
+export GOPATH="$HOME/go"
+export PATH="$PATH:$GOPATH/bin"

@@ -25,3 +25,7 @@ source ~/.nvm/nvm.sh
 
 # git
 git config --global alias.loga 'log --graph --oneline --decorate=full -20 --date=short --format="%C(yellow)%h%C(reset) %C(magenta)[%ad]%C(reset)%C(auto)%d%C(reset) %s %C(cyan)@%an%C(reset)"'
+
+# ruby rbenv
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"

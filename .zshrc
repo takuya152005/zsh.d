@@ -29,3 +29,6 @@ git config --global alias.loga 'log --graph --oneline --decorate=full -20 --date
 # ruby rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+# screenのセッション保存
+export SCREENDIR=~/.zsh.d/screen

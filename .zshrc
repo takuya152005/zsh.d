@@ -22,3 +22,6 @@ source ~/.nvm/nvm.sh
 
 # The next line enables shell command completion for gcloud.
 #source ~/shell/google/google-cloud-sdk/completion.zsh.inc
+
+# git
+git config --global alias.loga 'log --graph --oneline --decorate=full -20 --date=short --format="%C(yellow)%h%C(reset) %C(magenta)[%ad]%C(reset)%C(auto)%d%C(reset) %s %C(cyan)@%an%C(reset)"'

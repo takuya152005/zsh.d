@@ -466,3 +466,8 @@ nvm_sh=~/.nvm/nvm.sh
 if [ -f ${nvm_sh} ]; then
     source ${nvm_sh}
 fi
+
+# zsh-completions
+if [ -e /usr/local/share/zsh-completions ]; then
+    fpath=(/usr/local/share/zsh-completions $fpath)
+fi

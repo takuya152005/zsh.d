@@ -385,26 +385,26 @@ case $(uname) in
     *BSD|Darwin)
         if [ -x "$(which gnuls)" ]; then
             alias ls="gnuls"
-            alias la="ls -lhAF --color=auto"
+            alias ll="ls -lhAF --color=auto"
         else
             alias ls="ls -G"
-            alias la="ls -lhAFG"
+            alias ll="ls -lhAFG"
         fi
         alias ps="ps -fU$(whoami)"
         ;;
     SunOS)
         if [ -x "`which gls`" ]; then
             alias ls="gls"
-            alias la="ls -lhAF --color=auto"
+            alias ll="ls -lhAF --color=auto"
         else
             alias ls="ls -G"
-            alias la="ls -lhAF"
+            alias ll="ls -lhAF"
         fi
         alias ps="ps -fl -u$(/usr/xpg4/bin/id -un)"
         ;;
     *)
         alias ls="ls --color=auto"
-        alias la="ls -lhAF --color=auto"
+        alias ll="ls -lhAF --color=auto"
         alias ps="ps -fU$(whoami) --forest"
         ;;
 esac

@@ -54,3 +54,8 @@ export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 # direnv setting
 eval "$(direnv hook zsh)"
 
+
+# mysql
+export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+export PATH="/usr/local/opt/php@7.1/bin:$PATH"
+export PATH="/usr/local/opt/php@7.1/sbin:$PATH"

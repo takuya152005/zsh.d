@@ -19,6 +19,8 @@ path=(# システム用
       # rbenv用
       ## 2012-02-21
       $HOME/.rbenv/bin(N-/)
+      ## 2022-07-30 ggrep
+      /opt/homebrew/opt/grep/libexec/gnubin(N-/)
       # Debian GNU/Linux用
       /var/lib/gems/*/bin(N-/)
       # MacPorts用

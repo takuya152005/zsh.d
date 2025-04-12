@@ -354,6 +354,8 @@ setopt autopushd
 setopt pushd_ignore_dups
 ## スペルチェック
 setopt correct
+## zsh: no matches found対応
+setopt nonomatch
 
 
 # alias
@@ -471,3 +473,18 @@ fi
 if [ -e /usr/local/share/zsh-completions ]; then
     fpath=(/usr/local/share/zsh-completions $fpath)
 fi
+
+# Setup fzf
+# # ---------
+if [[ ! "$PATH" == */Users/t-iwamoto/.fzf/bin* ]]; then
+      export PATH="${PATH:+${PATH}:}/Users/t-iwamoto/.fzf/bin"
+fi
+
+# Auto-completion
+# ---------------
+[[ $- == *i* ]] && source "/Users/t-iwamoto/.fzf/shell/completion.zsh" 2> /dev/null
+
+# Key bindings
+# ------------
+source "/Users/t-iwamoto/.fzf/shell/key-bindings.zsh"
+

@@ -470,8 +470,10 @@ if [ -f ${nvm_sh} ]; then
 fi
 
 # zsh-completions
-if [ -e /usr/local/share/zsh-completions ]; then
-    fpath=(/usr/local/share/zsh-completions $fpath)
+if type brew &>/dev/null; then
+    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+    autoload -Uz compinit
+    compinit
 fi
 
 # Setup fzf

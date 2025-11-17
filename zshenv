@@ -165,7 +165,8 @@ case "$grep_version" in
     *)
         ### grep 2.5.4以降のみの設定
         ### grep対象としてディレクトリを指定したらディレクトリ内を再帰的にgrepする。
-        GREP_OPTIONS="--directories=recurse $GREP_OPTIONS"
+        ### COMMENTED OUT: This option causes issues with piped input in Makefiles
+        # GREP_OPTIONS="--directories=recurse $GREP_OPTIONS"
         ;;
 esac
 ### 拡張子が.tmpのファイルは無視する。

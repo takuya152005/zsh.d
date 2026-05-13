@@ -37,8 +37,6 @@ setopt extended_history
 setopt hist_ignore_dups
 ## スペースで始まるコマンドラインはヒストリに追加しない。
 setopt hist_ignore_space
-## すぐにヒストリファイルに追記する。
-setopt inc_append_history
 ## zshプロセス間でヒストリを共有する。
 setopt share_history
 ## C-sでのヒストリ検索が潰されてしまうため、出力停止・開始用にC-s/C-qを使わない。
@@ -69,7 +67,7 @@ color256()
     local green=$2; shift
     local blue=$3; shift
 
-    echo -n $[$red * 36 + $green * 6 + $blue + 16]
+    echo -n $(($red * 36 + $green * 6 + $blue + 16))
 }
 
 fg256()
@@ -226,7 +224,7 @@ update_prompt()
 precmd_functions=($precmd_functions update_prompt)
 
 # なれるまでは下記
-autoload colors
+autoload -Uz colors
 colors
 PROMPT="
  [%{${fg[yellow]}%}%~%{${reset_color}%}]  ${prompt_bar_left_date}
@@ -344,12 +342,8 @@ WORDCHARS="${WORDCHARS}|"
 limit coredumpsize 102400
 ## 出力の文字列末尾に改行コードが無い場合でも表示
 unsetopt promptcr
-## ビープを鳴らさない
-setopt nobeep
 ## サスペンド中のプロセスと同じコマンド名を実行した場合はリジューム
 setopt auto_resume
-## cd 時に自動で push
-setopt autopushd
 ## 同じディレクトリを pushd しない
 setopt pushd_ignore_dups
 ## スペルチェック
@@ -433,7 +427,7 @@ alias x="exit"
 ###            -: シンボリックリンク先のパスを評価。
 ###            .: 通常のファイルのみ残す。
 ### 2011-11-06
-alais_files=(~/.zsh.d/zshalias(N-.)
+alias_files=(~/.zsh.d/zshalias(N-.)
              ~/.zshalias(N-.))
 for alias_file in ${alias_files}; do
     source "${alias_file}"

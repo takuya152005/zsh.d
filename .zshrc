@@ -33,8 +33,8 @@ git config --global alias.loga 'log --graph --oneline --decorate=full  --date=sh
 # screenのセッション保存
 export SCREENDIR=~/.zsh.d/screen
 
-# brewでインストールしたscrennを使用する
-export PATH="/opt/homebrew/Cellar/screen/4.9.1/bin/screen:$PATH"
+# brewでインストールしたscreenを使用する
+export PATH="/opt/homebrew/bin:$PATH"
 
 # Go
 export GOPATH="$HOME/go"

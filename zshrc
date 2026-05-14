@@ -154,6 +154,17 @@ count_prompt_characters()
 ## プロンプトを更新する。
 update_prompt()
 {
+    # バージョン管理システムの情報を取得する。
+    LANG=C vcs_info >&/dev/null
+
+    # screen内では幅計算バーを使わずシンプルなプロンプトにする
+    if [[ -n "$STY" ]]; then
+        PROMPT="[%~] <%D{%Y/%m/%d %H:%M:%S}> -[%h]%{%B%}%#%{%b%} "
+        RPROMPT=""
+        [[ -n "$vcs_info_msg_0_" ]] && RPROMPT="${vcs_info_msg_0_}"
+        return
+    fi
+
     # プロンプトバーの左側の文字数を数える。
     # 左側では最後に実行したコマンドの終了ステータスを使って
     # いるのでこれは一番最初に実行しなければいけない。そうし
@@ -212,9 +223,6 @@ update_prompt()
             ;;
     esac
 
-    # バージョン管理システムの情報を取得する。
-    LANG=C vcs_info >&/dev/null
-    # バージョン管理システムの情報があったら右プロンプトに表示する。
     if [ -n "$vcs_info_msg_0_" ]; then
         RPROMPT="${vcs_info_msg_0_}-${RPROMPT}"
     fi
@@ -223,13 +231,8 @@ update_prompt()
 ## コマンド実行前に呼び出されるフック。
 precmd_functions=($precmd_functions update_prompt)
 
-# なれるまでは下記
 autoload -Uz colors
 colors
-PROMPT="
- [%{${fg[yellow]}%}%~%{${reset_color}%}]  ${prompt_bar_left_date}
-  %n %B%(?,%F{green},%F{red})%(!,#,>)%f%b "
-#PROMPT2="%n%B%(?,%F{green},%F{red})%(!,#,>)%f%b"
 
 
 
@@ -323,8 +326,6 @@ REPORTTIME=3
 # ログイン・ログアウト
 ## 全てのユーザのログイン・ログアウトを監視する。
 watch="all"
-## ログイン時にはすぐに表示する。
-log
 
 ## ^Dでログアウトしないようにする。
 setopt ignore_eof

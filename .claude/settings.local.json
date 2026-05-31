@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(zsh -lic)",
+      "Bash(zsh *)",
+      "Bash(typeset *)",
+      "Bash(infocmp screen.xterm-256color)",
+      "Bash(claude config *)",
+      "Bash(claude help *)",
+      "Bash(env)",
+      "Bash(claude --print \"tell me all the configuration options for terminal and screen rendering\")",
+      "Bash(claude -p \"list all settings.json configuration options with their descriptions\")"
+    ]
+  }
+}
